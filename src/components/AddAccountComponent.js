@@ -29,11 +29,7 @@ class AddAccountComponent extends React.Component {
     };
 
     addAccount = (addedAccount) => {
-        // First clear both the serverErrorMessage and serverSuccessMessage
-        this.setState({
-            serverErrorMessage: "",
-            serverSuccessMessage: ""
-        });
+
         // But here, we are posting to the API using Axios.
         axios.post('http://localhost:3004/users', addedAccount)
             .then((response) => {
@@ -49,8 +45,17 @@ class AddAccountComponent extends React.Component {
     };
     handleAccountSubmit = (event) => {
         event.preventDefault();
+
+        // First clear both the serverErrorMessage and serverSuccessMessage
+        this.setState({
+            serverErrorMessage: "",
+            serverSuccessMessage: ""
+        });
+
+        //  Call the "addAccount" Function that makes the API call and pass in "this.state.userDetails" as its parameter.
         this.addAccount(this.state.userDetails);
 
+        //  Reset the state after the API call.
         this.setState({
             userDetails: {
                 image:  PitcherAvatar,

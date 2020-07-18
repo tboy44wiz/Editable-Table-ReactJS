@@ -89,7 +89,7 @@ class TableComponents extends Component {
     const targetValue = targetElement.value;
 
     const newUpdatedUsers = this.state.users.map((eachUser) => {
-      if (eachUser.id == targetId) {
+      if (eachUser.id === targetId) {
         eachUser[targetName] = targetValue;
         return eachUser;
       }
@@ -110,7 +110,7 @@ class TableComponents extends Component {
     const targetValue = targetElement.value;
 
     this.state.users.map((eachUser) => {
-      if (eachUser.id == targetId) {
+      if (eachUser.id === targetId) {
         eachUser[targetName] = targetValue;
         Axios.put(`http://localhost:3004/users/${targetId}`, eachUser)
             .then((promise) => {})
